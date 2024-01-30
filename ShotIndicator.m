@@ -19,8 +19,8 @@ inter = [1 -m1;1 -m2] \ [b1;b2];
 
 % checking if the ball gets in, w.r.t the thickness of the ring 2 cm and
 % half radius of 6 cm, (beacuse their is an angle)
-% if (inter(2) < BasketLocation(2)+0.02+0.06 | inter(2) > BasketLocation(1)-0.02-0.06)
-if (inter(2) < BasketLocation(2) | inter(2) > BasketLocation(1))
+if (inter(2) < BasketLocation(2)+0.02+0.06 | inter(2) > BasketLocation(1)-0.02-0.06)
+% if (inter(2) < BasketLocation(2) | inter(2) > BasketLocation(1))
     Indicator = 0;
 else
     Indicator = 1;

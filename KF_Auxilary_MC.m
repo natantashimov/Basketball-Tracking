@@ -7,20 +7,13 @@
 % s.Q = process noise covariance.
 % s.R = measurement noise covariance.
 % s.H = observation matrix.
-%
-% 
-% 
-% 
-% 
-% 
-% 
+
 function s = KF_Auxilary_MC(len,sParams)
 clear s
 h = sParams.BallInitial_Y;
 d = sParams.BallInitial_X;
 v_x = sParams.v_x;
 v_y = sParams.v_y;
-% s.x = s.A*s.x +s.B*s.u
 s.x = [d        % x
        h        % y
        v_x        % x_dot

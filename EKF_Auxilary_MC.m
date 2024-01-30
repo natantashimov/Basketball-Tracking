@@ -69,7 +69,7 @@ s.R = [sigma_x^2, 0
     
 s.P = sParams.Pcov;
 
-for t = 1 : len
+for t = 1 : len+200
    s(end+1) = EKF_MC(s(end),alpha,dt); % perform a Kalman filter iteration
    Vx = s(end).x(3);
    Vy = s(end).x(4);

@@ -28,8 +28,8 @@ d = sParams.BallInitial_X;
 % x = f_bal(x,u)
 s.x = [d        % x
        h        % y
-       0        % x_dot
-       0        % y_dot    
+       5        % x_dot
+       8        % y_dot    
        beta];  % drag correction factor coefficiant 
                 % 5x1 matrix
     
@@ -67,21 +67,24 @@ s.R = [sigma_x^2, 0
         0,        sigma_y^2]; % variance, hence std^2     
     
 s.P = sParams.Pcov*eye(5);
-s.P(1,1)=2;
-s.P(2,2)=2;
-s.P(3,3)=20;
-s.P(4,4)=20;
-s.P(5,5)=4;
-
+s.P(1,1)=0.5;%2
+s.P(2,2)=1;%2
+s.P(3,3)=5;%10
+s.P(4,4)=5;%10
+s.P(5,5)=5;%25
+    
 samplesFlag = 1;
 s.Flag = [];
-for t = 1 : length(samples_Y)+100
+for t = 1 : length(samples_Y)+200
+%     if t >= 100
+%         s(end).R = s(end).R*10e6;
+%     end
    if t >= sParams.sampPrecet*length(samples_Y)
        samplesFlag = 0; 
        samples_X(t) = 0;
        samples_Y(t) = 0;
    end
-   if (samples_X(t) == -inf && samples_Y(t) == -inf)
+   if ((samples_X(t) == -inf || samples_X(t) == inf) && (samples_Y(t) == -inf || samples_Y(t) == inf)) 
        samplesFlag = 0;
    end
    s(end).Flag = samplesFlag;

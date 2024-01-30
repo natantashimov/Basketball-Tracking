@@ -7,13 +7,13 @@
 % s.Q = process noise covariance.
 % s.R = measurement noise covariance.
 % s.H = observation matrix.
-%
-% 
-% 
-% 
-% 
-% 
-% 
+
+
+
+
+
+
+
 function s = KalmanfilterAuxilary(samples_Y,samples_X,sParams)
 clear s
 h = sParams.BallInitial_Y;
@@ -21,8 +21,8 @@ d = sParams.BallInitial_X;
 % s.x = s.A*s.x +s.B*s.u
 s.x = [d        % x
        h        % y
-       0        % x_dot
-       0];      % y_dot    % 4x1 matrix
+       5        % x_dot
+       5];      % y_dot    % 4x1 matrix
 
 sigma_x = sParams.sigma_x;
 sigma_y = sParams.sigma_y; % [m], mean of daviation noise in the y axis
@@ -52,20 +52,26 @@ s.R = [sigma_x^2, 0
         0,        sigma_y^2]; % variance, hence std^2     
     
 s.P = sParams.Pcov*eye(4);
-s.P(1,1)=2;
-s.P(2,2)=2;
-s.P(3,3)=20;
-s.P(4,4)=20;
+s.P(1,1)=0.5;
+s.P(2,2)=1;
+s.P(3,3)=5;
+s.P(4,4)=5;
 
 
 samplesFlag = 1;
 s.Flag = [];
-for t = 1 : length(samples_Y)
+for t = 1 : length(samples_Y) + 110
    if t >= sParams.sampPrecet*length(samples_Y)
        samplesFlag = 0; 
+       samples_X(t) = 0;
+       samples_Y(t) = 0;
+   end
+   if ((samples_X(t) == -inf || samples_X(t) == inf) && (samples_Y(t) == -inf || samples_Y(t) == inf)) 
+       samplesFlag = 0;
    end
    s(end).Flag = samplesFlag;
    s(end).z = [samples_X(t);samples_Y(t)];  % create a measurement
    s(end+1) = kalmanf(s(end),samplesFlag); % perform a Kalman filter iteration
+   samplesFlag = 1;
 end
 end

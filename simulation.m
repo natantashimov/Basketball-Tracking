@@ -1,4 +1,6 @@
 %% Simulation
+% This script simulates random ball throw trajectories, adds random Gaussian noise to the trajectories 
+% and preforms Kalman Filter/Extended Kalman Filter on those synthetic noisy measurements.  
  clear all; close all; clc;
 %% Initilization
 
@@ -91,6 +93,9 @@ Y = pos_all(2,:);
 [~,i1] = max(Y);
 [~,i2] = max(Y_wo);
 
+
+%linear and non-linear models comparison
+
 % figure();
 % hold on;
 % plot(X,Y,'r','LineWidth',4);
@@ -118,7 +123,7 @@ Y_sampled_noised = Y_sampled_noised(mask);
 X_sampled_noised = X_sampled_noised(mask);
 
 
-% Extraordiner EKF
+% EKF with drag
  % Graphs
 figure()
 hold on;
@@ -152,7 +157,7 @@ hold off;
 
 
 
-
+% EKF without drag
 % figure()
 % hold on;
 % plot(X_sampled(mask),Y_sampled(mask),'LineWidth',3);
@@ -169,6 +174,7 @@ hold off;
 
 
 % % ordinary KF
+% with drag
 figure()
 hold on;    
 plot(X_sampled(mask),Y_sampled(mask),'LineWidth',4);
@@ -201,7 +207,7 @@ hold off;
 
 
 
-% ordinary KF WO drag
+% ordinary KF without drag
 % figure()
 % hold on;    
 % plot(X_sampled(mask),Y_sampled(mask),'LineWidth',3);
