@@ -13,6 +13,7 @@ function s = kalmanf_MC(s)
  % KF algorithem
  x = A * x + B * u; % Time Update (“Predict”)
  P = A * P * A' + Q;
+ 
  % output assignment
  s.x = x;
  s.P = P;

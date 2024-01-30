@@ -23,6 +23,7 @@ else
     AngleRange = MaxAngle - MinAngle;
     Angle = AngleRange * rand + MinAngle;
 end
+
 % Ball Params
 BallMaxRadius = 0.121; % [m]
 BallMinRadius = 0.12; % [m]

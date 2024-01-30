@@ -7,13 +7,7 @@
 % s.Q = process noise covariance.
 % s.R = measurement noise covariance.
 % s.H = observation matrix.
-%
-% 
-% 
-% 
-% 
-% 
-% 
+
 function s = EKF_Auxilary_MC(len,sParams)
 clear s
 dragCoeff = sParams.dragCoeff; % for a sphere

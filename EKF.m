@@ -15,6 +15,7 @@ function s = EKF(s,samplesFlag,alpha,dt)
  x = time_update_function(x,u,alpha,dt) ; % Time Update (“Predict”)
  P = A * P * A' + Q;
  KG = P * H' /(H * P * H' + R); 
+ 
  if samplesFlag == 1
     x = x + KG * (z - H * x); % Measurement Update (“Correct”)
     P = P - KG * H * P; 

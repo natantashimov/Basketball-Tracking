@@ -99,7 +99,6 @@ for n = 10 : 60 % first sample "has" no velocity, so it's worthless
     delete(p5);
     delete(p6);
     delete(p7);
-    %delete(p8);
     delete(p9);
     delete(p10);
 

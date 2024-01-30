@@ -33,7 +33,6 @@ for n = 10 : len % first 10 samples are to noisy, thus worthless
     sigma = sqrt(P{n}(1,1));
   
     Est{n} = normcdf(BasketLocation(1),mu,sigma) - normcdf(BasketLocation(2),mu,sigma); 
-
 end
 
 end

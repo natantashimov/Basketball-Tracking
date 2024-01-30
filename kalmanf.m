@@ -15,10 +15,12 @@ function s = kalmanf(s,samplesFlag)
  x = A * x + B * u; % Time Update (“Predict”)
  P = A * P * A' + Q;
  KG = P * H' * inv(H * P * H' + R); 
+ 
  if samplesFlag == 1
     x = x + KG * (z - H * x); % Measurement Update (“Correct”)
     P = P - KG * H * P; 
  end
+ 
  % output assignment
  s.x = x;
  s.P = P;

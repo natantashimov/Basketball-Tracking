@@ -7,13 +7,7 @@
 % s.Q = process noise covariance.
 % s.R = measurement noise covariance.
 % s.H = observation matrix.
-%
-% 
-% 
-% 
-% 
-% 
-% 
+
 function s = EKF_Auxilary(samples_Y,samples_X,sParams)
 clear s
 dragCoeff = sParams.dragCoeff; % for a sphere
@@ -25,7 +19,7 @@ alpha = -dragCoeff*crossSection*rho/(2*weight); % drag extended coefficiant
 beta = 1;
 h = sParams.BallInitial_Y;
 d = sParams.BallInitial_X;
-% x = f_bal(x,u)
+
 s.x = [d        % x
        h        % y
        5        % x_dot
@@ -54,7 +48,7 @@ s.B =[0.5*dt^2, 0,        0
       0,        0.5*dt^2, 0 
       dt,       0,        0
       0,        dt,       0
-      0,        0,        2e-4];% needed small factor      % 5x2 matrix
+      0,        0,        2e-4];% needed small factor % 5x2 matrix
  
   
 % % Define a process noise (std)

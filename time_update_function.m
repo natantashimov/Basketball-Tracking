@@ -1,4 +1,5 @@
 % x_time_update
+
 function x = time_update_function(state_vec,input,alpha,dt) 
 pos_now = state_vec(1:2);
 vel_now = state_vec(3:4);

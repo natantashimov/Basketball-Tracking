@@ -4,7 +4,7 @@ sParams.sampPrecet = sampPrecet;
 [V0,Angle,R,Weight] =  ParametersInitialization('free_throw'); % 3Pt,free_throw
 sParams.R = 0.1205;
 sParams.weight = 0.6;
-% % tmp
+
 % Weight = 0.6; R = 0.1205;
 % % end tmp
 BallInitial_X = 0 + 0.1; %7.24 (4.57) % [m], distance from the basket to the 3-point (free-throw) line

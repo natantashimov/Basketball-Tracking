@@ -8,12 +8,6 @@
 % s.R = measurement noise covariance.
 % s.H = observation matrix.
 
-
-
-
-
-
-
 function s = KalmanfilterAuxilary(samples_Y,samples_X,sParams)
 clear s
 h = sParams.BallInitial_Y;
